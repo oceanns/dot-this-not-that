@@ -1,6 +1,11 @@
 //global variables
 float buttonX1, buttonY1, buttonWidth1, buttonHeight1;
 float buttonX2, buttonY2, buttonWidth2, buttonHeight2;
+float rectDisplayX, rectDisplayY, rectDisplayWidth, rectDisplayHeight;
+float ellipseX, ellipseY, ellipseXDiameter, ellipseYDiameter;
+float x, y, xDiameter, yDiameter;
+color black = #000000, white = #FFFFFF, blue = #4572EA ;
+Boolean rectON=false, ellipseON=false;
 //
 void setup() 
 {
@@ -12,30 +17,60 @@ void setup()
   String ls="Landscape or Square", p="portrait", DO="Display Orientation", instruct="turn phone";
   String orientation = (appWidth >= appHeight) ? ls : p ; //ternary operator
   println (DO, orientation);
-  if (orientation==p) println(instruct);
+  //if (orientation==p) println(instruct);
+  if ( orientation==ls ) {
+    println("Good to Go");
+  } else { //Break our app if not landscape
+    println(instruct);
+    appWidth = displayWidth*0; 
+    appHeight = displayHeight*0; 
+  } 
   println("App Width", appWidth, "\tApp Height", appHeight);
-  /*
+  
   //Population
-  buttonX1 = ;
-  buttonY1 = ;
-  buttonWidth1 = ;
-  buttonHeight1 = ;
-  buttonX2 = ;
-  buttonY2 = ;
-  buttonWidth2 = ;
-  buttonHeight2 = ;
-  */
+  buttonX1 = appWidth*1/4;
+  buttonY1 = appHeight*3/4;
+  buttonWidth1 = appWidth*1/5;
+  buttonHeight1 = appHeight*1/5;
+  buttonX2 = appWidth*3/4;
+  buttonY2 = buttonY1;
+  buttonWidth2 = buttonWidth1;
+  buttonHeight2 = buttonHeight1;
+  rectDisplayX = appWidth*1/8;
+  rectDisplayY = appHeight*1/8;
+  rectDisplayWidth = buttonWidth1;
+  rectDisplayHeight = buttonWidth1;
+  ellipseX = appWidth*6/8;
+  ellipseY = rectDisplayY;
+  ellipseXDiameter = appWidth*1/8;
+  ellipseYDiameter = appHeight*1/8;
+  float ellipseRectXCenter = ellipseX + ellipseXDiameter*1/2;
+  float ellipseRectYCenter = ellipseY + ellipseYDiameter*1/2;
+  x = ellipseRectXCenter;
+  y = ellipseRectYCenter;
+  xDiameter = ellipseXDiameter;
+  yDiameter = ellipseYDiameter;
+ 
 }//End setup
 //
 void draw() 
 {
-  //rect( buttonX1, buttonY1, buttonWidth1, buttonHeight1 ); 
-  //rect( buttonX2, buttonY2, buttonWidth2, buttonHeight2 ); 
-  //rect(); 
-  //rect(); 
+  background(black);
+  rect( buttonX1, buttonY1, buttonWidth1, buttonHeight1 ); 
+  rect( buttonX2, buttonY2, buttonWidth2, buttonHeight2 ); 
+  if ( rectON== true && ellipseON==false) rect( rectDisplayX, rectDisplayY, rectDisplayWidth, rectDisplayHeight); 
+  //rect( ellipseX, ellipseY, ellipseXDiameter, ellipseYDiameter);
+  if (rectON==false && ellipseON==true) ellipse(x, y, xDiameter, yDiameter);
 }//End draw
 //
 void keyPressed() {}//End keyPressed
 //
-void mousePressed() {}//End mousePressed
+void mousePressed() 
+{
+  rectON=false;
+  ellipseON=false;
+  if (mouseX>=buttonX1 && mouseX<=buttonX1+buttonWidth1 && mouseY>=buttonY1 && mouseY<=buttonY1+buttonHeight1) rectON=true;
+  if (mouseX>=buttonX2 && mouseX<=buttonX2+buttonWidth2 && mouseY>=buttonY2 && mouseY<=buttonY2+buttonHeight2) ellipseON=true;
+  
+}//End mousePressed
 //
