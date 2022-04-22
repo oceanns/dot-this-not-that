@@ -54,15 +54,10 @@ void setup()
   xDiameter = ellipseXDiameter;
   yDiameter = ellipseYDiameter;
   //text setup
+  //
   println("start of console");
   buttonFont = createFont ("Andalus", 50);
-  textAlign (CENTER, CENTER);
-  //values : [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
-  textFont(buttonFont, 25);
-  //
-  text(buttonText1, buttonX1, buttonY1, buttonWidth1, buttonHeight1);
-  text(buttonText2, buttonX2, buttonY2, buttonWidth2, buttonHeight2);
-  fill(green);
+  
  
 }//End setup
 //
@@ -75,7 +70,14 @@ void draw()
   //rect( ellipseX, ellipseY, ellipseXDiameter, ellipseYDiameter);
   if (rectON==false && ellipseON==true) ellipse(x, y, xDiameter, yDiameter);
   //
-  fill(black); 
+  fill(green);
+  textAlign (CENTER, CENTER);
+  //values : [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
+  textFont(buttonFont, 25);
+  //
+  text(buttonText1, buttonX1, buttonY1, buttonWidth1, buttonHeight1);
+  text(buttonText2, buttonX2, buttonY2, buttonWidth2, buttonHeight2);
+  fill(black);
 }//End draw
 //
 void keyPressed() {}//End keyPressed
