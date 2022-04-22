@@ -6,6 +6,9 @@ float ellipseX, ellipseY, ellipseXDiameter, ellipseYDiameter;
 float x, y, xDiameter, yDiameter;
 color black = #000000, white = #FFFFFF, blue = #4572EA ;
 Boolean rectON=false, ellipseON=false;
+PFont buttonFont;
+color green= #68E35E;
+String buttonText1="click", buttonText2="click";
 //
 void setup() 
 {
@@ -50,17 +53,29 @@ void setup()
   y = ellipseRectYCenter;
   xDiameter = ellipseXDiameter;
   yDiameter = ellipseYDiameter;
+  //text setup
+  println("start of console");
+  buttonFont = createFont ("Andalus", 50);
+  textAlign (CENTER, CENTER);
+  //values : [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
+  textFont(buttonFont, 25);
+  //
+  text(buttonText1, buttonX1, buttonY1, buttonWidth1, buttonHeight1);
+  text(buttonText2, buttonX2, buttonY2, buttonWidth2, buttonHeight2);
+  fill(green);
  
 }//End setup
 //
 void draw() 
 {
-  background(black);
+  background(blue);
   rect( buttonX1, buttonY1, buttonWidth1, buttonHeight1 ); 
   rect( buttonX2, buttonY2, buttonWidth2, buttonHeight2 ); 
   if ( rectON== true && ellipseON==false) rect( rectDisplayX, rectDisplayY, rectDisplayWidth, rectDisplayHeight); 
   //rect( ellipseX, ellipseY, ellipseXDiameter, ellipseYDiameter);
   if (rectON==false && ellipseON==true) ellipse(x, y, xDiameter, yDiameter);
+  //
+  fill(black); 
 }//End draw
 //
 void keyPressed() {}//End keyPressed
