@@ -77,15 +77,19 @@ void keyPressed() {}//End keyPressed
 //
 void mousePressed() 
 {
-  rectON=false;
-  ellipseON=false;
-  if () {
-    rectON=false;
-  ellipseON=true;
-  } else {
-    rectON=true;
-  ellipseON=false;
+  println("Before the Button", "\tRect", rectON, "\tEllipse", ellipseON);
+  //Note: "Third button" is deleted due to Boolean Logic Error
+  //Need button specifically to Reset Variables
+  if ( mouseX>=buttonX1 && mouseX<=buttonX1+buttonWidth1 && mouseY>=buttonY1 && mouseY<=buttonY1+buttonHeight1 ) {
+    if ( rectON==true ) {
+      rectON=false;
+      ellipseON=true;
+    } else {
+      rectON=true;
+      ellipseON=false;
+    }
   }
-  if (mouseX>=buttonX1 && mouseX<=buttonX1+buttonWidth1 && mouseY>=buttonY1 && mouseY<=buttonY1+buttonHeight1) rectON=true;
-}//End mousePressed
+}
+  
+//End mousePressed
 //
